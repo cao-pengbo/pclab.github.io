@@ -6,7 +6,7 @@
     <title>PC Lab @ Westlake University</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,11 +16,11 @@
             --light-gray: #f8f8f8;
             --header-gray: #fafafa;
             --white: #ffffff;
-            --spacing-xs: 0.4rem;
-            --spacing-sm: 0.8rem;
-            --spacing-md: 1.5rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 3rem;
+            --spacing-xs: 0.3rem;
+            --spacing-sm: 0.6rem;
+            --spacing-md: 1.2rem;
+            --spacing-lg: 1.8rem;
+            --spacing-xl: 2.5rem;
             --border-radius: 4px;
             --transition: all 0.2s ease;
         }
@@ -43,9 +43,10 @@
         }
 
         h1, h2, h3 {
-            font-weight: 500;
+            font-family: 'Aclonica', sans-serif;
+            font-weight: 400;
             color: var(--black);
-            letter-spacing: -0.5px;
+            letter-spacing: 0.5px;
         }
 
         p {
@@ -149,7 +150,7 @@
         /* Home Section - Two Column Layout */
         .home-grid {
             display: grid;
-            grid-template-columns: 30% 70%;
+            grid-template-columns: 35% 65%;
             gap: var(--spacing-md);
             align-items: start;
         }
@@ -157,7 +158,7 @@
         .left-column {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-sm);
+            gap: var(--spacing-xs);
         }
 
         .small-image {
@@ -222,6 +223,21 @@
             margin-right: auto;
         }
 
+        .research-question {
+            margin: var(--spacing-md) 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .research-question::before {
+            content: attr(data-number) ".";
+            position: absolute;
+            left: 0;
+            font-weight: 500;
+            color: var(--black);
+            font-family: 'Alegreya Sans', sans-serif;
+        }
+
         .research-image-simple {
             margin: var(--spacing-lg) auto 0;
             text-align: center;
@@ -270,11 +286,19 @@
             color: var(--black);
             margin-bottom: var(--spacing-xs);
             font-size: 1.1rem;
+            min-height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .person-position {
             color: var(--gray);
             font-size: 1rem;
+            min-height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Publications Section */
@@ -284,7 +308,7 @@
 
         .publication-item {
             margin-bottom: var(--spacing-md);
-            padding-left: 2.5rem;
+            padding-left: 1.8rem;
             position: relative;
         }
 
@@ -298,8 +322,8 @@
             position: absolute;
             left: 0;
             top: 0;
-            font-weight: 500;
             color: var(--black);
+            font-weight: 400;
         }
 
         .journal {
@@ -385,6 +409,8 @@
             font-weight: 500;
             margin-top: var(--spacing-md);
             font-family: 'Alegreya Sans', sans-serif;
+            text-decoration: underline;
+            display: inline-block;
         }
 
         /* Footer */
@@ -421,7 +447,7 @@
             }
             
             .left-column {
-                gap: var(--spacing-sm);
+                gap: var(--spacing-xs);
             }
             
             .large-image {
@@ -475,6 +501,11 @@
                 height: 140px;
             }
             
+            .person-name,
+            .person-position {
+                min-height: auto;
+            }
+            
             .research-figure img,
             .research-image-simple img {
                 width: 90%;
@@ -518,24 +549,28 @@
             }
             
             .publication-item {
-                padding-left: 2rem;
+                padding-left: 1.5rem;
+            }
+            
+            .research-question {
+                padding-left: 1.2rem;
             }
         }
 
         /* Section Headings */
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: var(--spacing-lg);
             border-bottom: none;
         }
 
         h2 {
-            font-size: 1.9rem;
+            font-size: 2.1rem;
             margin: var(--spacing-lg) 0 var(--spacing-sm);
         }
 
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin: var(--spacing-md) 0 var(--spacing-xs);
         }
     </style>
@@ -597,19 +632,19 @@
             
             <p>By directly examining bacterial gene expression in clinical samples, we have begun to understand <i>P. aeruginosa</i> physiology in humans. We discovered a key small regulatory RNA called SicX, which plays a critical role in orchestrating the transition between bacterial chronic persistence and acute exacerbation. Leveraging information of bacterial gene expression within human hosts, we can better understand how <i>P. aeruginosa</i> responds to host environmental cues and changes lifestyles accordingly. Building upon this discovery, our lab focuses on addressing several major questions:</p>
             
-            <h2>How does SicX sRNA govern bacterial chronic or acute infection?</h2>
+            <h2 class="research-question" data-number="1">How does SicX sRNA govern bacterial chronic or acute infection?</h2>
             <p>We've established the roles of SicX in vitro in response to oxygen deprivation, but how it governs bacterial lifestyle choice during infection requires further study. Filling this gap is critical for designing new therapies against this important pathogenic trait.</p>
             
-            <h2>What are the roles of other sRNAs in human infections?</h2>
+            <h2 class="research-question" data-number="2">What are the roles of other sRNAs in human infections?</h2>
             <p>Our discovery of SicX is just the tip of the iceberg. Despite considerable efforts to identify bacterial sRNAs, our knowledge of their identities and functions remains limited to a few examples. Our goal is to uncover and study diverse sRNAs related to infections.</p>
             
-            <h2>How does inter and intra-species communication impact the progression and outcomes of bacterial infections?</h2>
+            <h2 class="research-question" data-number="3">How does inter and intra-species communication impact the progression and outcomes of infections?</h2>
             <p>Bacterial populations within the host often exhibit physiological heterogeneity and genetic diversity. Moreover, various microbial species often coexist and show intricate interactions with host cells. We aim to explore how novel mechanisms of cell-cell communication can shape the dynamics of bacterial infections.</p>
             
             <p>Overall, our lab is dedicated to unraveling the multifaceted nature of diverse bacterial behaviors and their implications for human health.</p>
             
             <div class="research-image-simple">
-                <img src="members_2026/word cloud.tif" alt="Bacterial communication research">
+                <img src="members_2026/word cloud.png" alt="Bacterial communication research">
             </div>
         </section>
 
@@ -772,7 +807,7 @@
                 <div class="news-date">October 2023</div>
                 <p>Jun 2024. A few personnel changes over the past few months: Farewell to our all-star research assistant Hantao and admin assistant Shuhan, who helped tremendously setting up our lab and getting things off the ground. We will miss you both! On a brighter note, we are thrilled to welcome our new admin assistant Yang Xiao, our postdoc Zijing, and our visiting students Yongmei and Danni. Exciting summer research awaits!</p>
                 <div class="news-image">
-                    <img src="news/IMG_0381.jpg" alt="Lab personnel changes in 2024">
+                    <img src="members_2026/IMG_0381.jpg" alt="Lab personnel changes in 2024">
                 </div>
             </div>
             
@@ -780,7 +815,7 @@
                 <div class="news-date">August 2023</div>
                 <p>Mar 2024. New year, new group photo! Welcome to our newest lab member, Haoru.</p>
                 <div class="news-image">
-                    <img src="news/lab+photo.jpg" alt="Lab group photo 2024">
+                    <img src="members_2026/lab+photo.jpg" alt="Lab group photo 2024">
                 </div>
             </div>
             
@@ -793,7 +828,8 @@
         <!-- Contact Section -->
         <section id="contact" class="section">
             <div class="contact-simple">
-                <p>Best approach to contact Pengbo is via email caopengbo@westlake.edu.cn</p>
+                <p>Best approach to contact Pengbo is via email:</p>
+                <div class="contact-email">caopengbo@westlake.edu.cn</div>
             </div>
         </section>
     </main>
