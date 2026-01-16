@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microbial Ecology Lab - Westlake University</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #222222;
+            --dark-gray: #444444;
+            --gray: #666666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            --border-radius: 4px;
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alegreya Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3 {
+            font-weight: 500;
+            color: var(--black);
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+            z-index: 1000;
+            padding: 0 var(--spacing-md);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: var(--spacing-xs) 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--gray);
+        }
+
+        nav ul li a.active {
+            border-bottom: 2px solid var(--black);
+        }
+
+        .twitter-icon {
+            color: var(--black);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .twitter-icon:hover {
+            opacity: 0.7;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 100px auto var(--spacing-xl);
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Home Section - Two Column Layout */
+        .home-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: var(--spacing-lg);
+            align-items: start;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .small-image {
+            height: 250px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .home-text {
+            padding-right: var(--spacing-sm);
+        }
+
+        .large-image {
+            height: 550px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        /* Research Section */
+        .research-image {
+            height: 200px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-md) 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-style: italic;
+            text-align: center;
+            padding: var(--spacing-sm);
+        }
+
+        /* People Section */
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .person {
+            text-align: center;
+        }
+
+        .person-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            margin: 0 auto var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .person-name {
+            font-weight: 500;
+            color: var(--black);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .person-position {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Publications Section */
+        .publication-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .publication-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .journal {
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .author-underline {
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .publication-link {
+            text-decoration: underline;
+            color: var(--black);
+            font-weight: 500;
+            margin-left: var(--spacing-xs);
+        }
+
+        .publication-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Join Section */
+        .join-position {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .join-position:last-child {
+            margin-bottom: 0;
+        }
+
+        .position-title {
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        /* News Section */
+        .news-item {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .news-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .news-image {
+            height: 200px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            margin-top: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        /* Contact Section */
+        .contact-simple {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+        }
+
+        .contact-email {
+            font-size: 1.4rem;
+            color: var(--black);
+            font-weight: 500;
+            margin-top: var(--spacing-md);
+            font-family: 'Alegreya Sans', sans-serif;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--light-gray);
+            padding: var(--spacing-lg) var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .footer-link {
+            color: var(--black);
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .home-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            .left-column {
+                gap: var(--spacing-md);
+            }
+            
+            .large-image {
+                height: 300px;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                height: 60px;
+                padding: 0 var(--spacing-sm);
+            }
+            
+            nav ul {
+                gap: var(--spacing-sm);
+            }
+            
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+            
+            .logo {
+                height: 35px;
+            }
+            
+            main {
+                margin-top: 80px;
+                padding: 0 var(--spacing-sm);
+            }
+            
+            .people-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: var(--spacing-md);
+            }
+            
+            .person-img {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: var(--spacing-sm);
+                gap: var(--spacing-sm);
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--spacing-sm);
+            }
+            
+            main {
+                margin-top: 100px;
+            }
+            
+            .contact-email {
+                font-size: 1.2rem;
+                word-break: break-all;
+            }
+            
+            .people-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Section Headings */
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-lg);
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin: var(--spacing-lg) 0 var(--spacing-sm);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: var(--spacing-md) 0 var(--spacing-xs);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                Lab Logo (40px height)
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" data-tab="home" class="active">Home</a></li>
+                    <li><a href="#" data-tab="research">Research</a></li>
+                    <li><a href="#" data-tab="people">People</a></li>
+                    <li><a href="#" data-tab="publications">Publications</a></li>
+                    <li><a href="#" data-tab="join">Join</a></li>
+                    <li><a href="#" data-tab="news">News</a></li>
+                    <li><a href="#" data-tab="contact">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="https://twitter.com" target="_blank" class="twitter-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section - Two Column Layout -->
+        <section id="home" class="section active">
+            <div class="home-grid">
+                <div class="left-column">
+                    <div class="small-image">
+                        Research Illustration 1
+                    </div>
+                    <div class="home-text">
+                        <p>We study the behaviors of bacterial pathogens during chronic infections, specifically how they adapt to the host environment and how they interact with other co-inhabiting microbes and host cells to form unique ecological niches that evade immune clearance and resist stressors such as antibiotics.</p>
+                    </div>
+                </div>
+                <div class="large-image">
+                    Main Research Image
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <h1>Research</h1>
+            <p>Bacteria, similar to higher animals, exhibit remarkable versatility by altering their behaviors in different environments. While microbiologists typically study bacteria under simple lab conditions, our knowledge of bacterial physiology in their natural habitats (e.g. humans, soils) is limited. Our lab is dedicated to using various state-of-the-art approaches to unravel how bacterial pathogens behave in the human body. By characterizing the in-situ physiology of opportunistic pathogens (such as <i>Pseudomonas aeruginosa</i>), we aim to provide molecular insights into developing new therapeutics (such as antisense therapy) to combat challenging bacterial infections.</p>
+            
+            <div class="research-image">
+                P. aeruginosa produces a small RNA named SicX, which is induced in low oxygen conditions and governs the shift between chronic and acute infections (Cao et al., 2023)
+            </div>
+            
+            <p>By directly examining bacterial gene expression in clinical samples, we have begun to understand <i>P. aeruginosa</i> physiology in humans. We discovered a key small regulatory RNA called SicX, which plays a critical role in orchestrating the transition between bacterial chronic persistence and acute exacerbation. Leveraging information of bacterial gene expression within human hosts, we can better understand how <i>P. aeruginosa</i> responds to host environmental cues and changes lifestyles accordingly. Building upon this discovery, our lab focuses on addressing several major questions:</p>
+            
+            <h2>How does SicX sRNA govern bacterial chronic or acute infection?</h2>
+            <p>We've established the roles of SicX in vitro in response to oxygen deprivation, but how it governs bacterial lifestyle choice during infection requires further study. Filling this gap is critical for designing new therapies against this important pathogenic trait.</p>
+            
+            <h2>What are the roles of other sRNAs in human infections?</h2>
+            <p>Our discovery of SicX is just the tip of the iceberg. Despite considerable efforts to identify bacterial sRNAs, our knowledge of their identities and functions remains limited to a few examples. Our goal is to uncover and study diverse sRNAs related to infections.</p>
+            
+            <h2>How does inter and intra-species communication impact the progression and outcomes of bacterial infections?</h2>
+            <p>Bacterial populations within the host often exhibit physiological heterogeneity and genetic diversity. Moreover, various microbial species often coexist and show intricate interactions with host cells. We aim to explore how novel mechanisms of cell-cell communication can shape the dynamics of bacterial infections.</p>
+            
+            <p>Overall, our lab is dedicated to unraveling the multifaceted nature of diverse bacterial behaviors and their implications for human health.</p>
+            
+            <div class="research-image" style="margin-top: var(--spacing-lg);">
+                Research Figure 2
+            </div>
+        </section>
+
+        <!-- People Section -->
+        <section id="people" class="section">
+            <h1>People</h1>
+            <div class="people-grid">
+                <!-- 13 People -->
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Pengbo Cao</div>
+                    <div class="person-position">Principal Investigator</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 2</div>
+                    <div class="person-position">Postdoctoral Scholar</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 3</div>
+                    <div class="person-position">Graduate Student</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 4</div>
+                    <div class="person-position">Graduate Student</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 5</div>
+                    <div class="person-position">Research Assistant</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 6</div>
+                    <div class="person-position">Research Assistant</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 7</div>
+                    <div class="person-position">Undergraduate Student</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 8</div>
+                    <div class="person-position">Undergraduate Student</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 9</div>
+                    <div class="person-position">Visiting Scholar</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 10</div>
+                    <div class="person-position">Lab Manager</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 11</div>
+                    <div class="person-position">Technician</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 12</div>
+                    <div class="person-position">Technician</div>
+                </div>
+                <div class="person">
+                    <div class="person-img">Photo</div>
+                    <div class="person-name">Researcher 13</div>
+                    <div class="person-position">Research Assistant</div>
+                </div>
+            </div>
+            
+            <h2 style="margin-top: var(--spacing-xl);">Alumni</h2>
+            <p><strong>2023:</strong> John Doe (Postdoc), Jane Smith (Graduate Student)</p>
+            <p><strong>2022:</strong> Alex Johnson (Research Assistant), Maria Garcia (Visiting Scholar)</p>
+            <p><strong>2021:</strong> David Brown (Undergraduate Student), Sarah Lee (Lab Manager)</p>
+            <p><strong>2020:</strong> Michael Chen (Technician), Emily Wilson (Postdoc)</p>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <h1>Publications</h1>
+            <div class="publication-item">
+                <p><span class="author-underline">Cao, P.</span>, Fleming, D., Moustafa, D. A., Dolan, S. K., Szymanik, K. H., Redman, W. K., Ramos, A., Diggle, F. L., Sullivan, C. S., Goldberg, J. B., Rumbaugh, K. P., and Whiteley, M. (2023). A Pseudomonas aeruginosa small RNA regulates chronic and acute infection. <span class="journal">Nature</span>. <a href="#" class="publication-link">Link</a> <a href="#" class="publication-link">Research briefing</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>Ibberson, C. B., Barraza, J. P., Holmes, A. L., <span class="author-underline">Cao, P.</span>, and Whiteley, M. (2022). Precise spatial structure impacts antimicrobial susceptibility of S. aureus in polymicrobial wound infections. <span class="journal">Proceedings of the National Academy of Sciences</span>, 119(51), e2212340119. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>Balagam, R., <span class="author-underline">Cao, P.</span> (co-first), Sah, G. P., Zhang, Z., Subedi, K., Wall, D., and Igoshin, O. A. (2021). Emergent myxobacterial behaviors arise from reversal suppression induced by kin contacts. <span class="journal">mSystems</span>, 6(6), e00720-21. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>Sah, G. P., <span class="author-underline">Cao, P.</span>, and Wall, D. (2020). MYXO‐CTERM sorting tag directs proteins to the cell surface via the type II secretion system. <span class="journal">Molecular Microbiology</span>, 113(5), 1038-1051. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>[Review article] <span class="author-underline">Cao, P.</span>, and Wall, D. (2020). The Fluidity of the Bacterial Outer Membrane Is Species Specific: Bacterial Lifestyles and the Emergence of a Fluid Outer Membrane. <span class="journal">BioEssays</span>, 1900246. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p><span class="author-underline">Cao P.</span> and Wall D. (2019). Direct visualization of a molecular handshake that governs kin recognition and tissue formation in myxobacteria. <span class="journal">Nature Communications</span>. 10(1), 1-10. <a href="#" class="publication-link">Link</a> <a href="#" class="publication-link">Behind the paper</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p><span class="author-underline">Cao P.</span>, Wei X., Awal R., Müller R., and Wall D. (2019). A highly polymorphic receptor governs many distinct self-recognition types within the Myxococcales order. <span class="journal">mBio</span>. e02751-18. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>[Review article] Troselj V., <span class="author-underline">Cao P.</span> (co-first) and Wall D. (2017). Cell-cell recognition and social networking in bacteria. <span class="journal">Environmental Microbiology</span>. doi:10.1111/1462-2920.14005. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p><span class="author-underline">Cao P.</span> and Wall D. (2017). Self-identify reprogrammed by a single residue switch in a cell surface receptor of a social bacterium. <span class="journal">Proceedings of the National Academy of Sciences</span>. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>Vassallo C., <span class="author-underline">Cao P.</span>, Conklin A., Finkelstein H., Hayes C., and Wall D. (2017). Infectious polymorphic toxins delivered by outer membrane exchange discriminate kin in myxobacteria. <span class="journal">eLife</span>. 6:e29397. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>Vassallo C., Pathak D.T., <span class="author-underline">Cao P.</span>, Zuckerman D.M., Hoiczyk E., and Wall D. (2015). Cell rejuvenation and social behaviors promoted by LPS exchange in myxobacteria. <span class="journal">Proceedings of the National Academy of Sciences</span>. 112(22):E2939-46. <a href="#" class="publication-link">Link</a></p>
+            </div>
+            
+            <div class="publication-item">
+                <p>[Review article] <span class="author-underline">Cao, P.</span>, Dey A., Vassallo C. and Wall D. (2015). How myxobacteria cooperate. <span class="journal">Journal of Molecular Biology</span>. 427:3709-3721. <a href="#" class="publication-link">Link</a></p>
+            </div>
+        </section>
+
+        <!-- Join Section -->
+        <section id="join" class="section">
+            <h1>Join Us</h1>
+            <p>We aim to foster an inclusive and collaborative environment where individuals from diverse backgrounds feel comfortable expressing their opinions and are encouraged to thrive as independent scientists. We mentor individuals to perceive the 'big picture' of their research project, while developing robust expertise in conducting mechanistic work. If you are interested in joining our lab, see the opportunities below.</p>
+            
+            <div class="join-position">
+                <div class="position-title">Postdoctoral Scholar</div>
+                <p>Intrigued by our research focus and our approach to tackle scientific questions? We welcome those with a PhD (or those on track to obtain one) in various disciplines to join us. Please email Pengbo your CV, a brief description of your research interests, and the contact information of at least two referees.</p>
+            </div>
+            
+            <div class="join-position">
+                <div class="position-title">Graduate Student</div>
+                <p>We are affiliated with the School of Life Sciences at Westlake University. Please visit the website to apply for the PhD program. Already admitted and interested in a lab rotation? Reach out to Pengbo via email to arrange a meeting.</p>
+            </div>
+            
+            <div class="join-position">
+                <div class="position-title">Research Assistant</div>
+                <p>Fresh out of college and interested in gaining research experience? Please email Pengbo your CV and briefly explain why you are interested in getting involved in our research.</p>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="section">
+            <h1>News</h1>
+            
+            <div class="news-item">
+                <div class="news-date">October 2023</div>
+                <p>Our paper on Pseudomonas aeruginosa small RNA regulation of chronic and acute infection was published in Nature!</p>
+                <div class="news-image">Nature Paper Celebration</div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">August 2023</div>
+                <p>Welcome to our new lab members: John, Sarah, and Michael who joined as graduate students and research assistants.</p>
+                <div class="news-image">New Lab Members</div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">June 2023</div>
+                <p>Our lab presented at the ASM Microbe conference with three oral presentations and two posters.</p>
+                <div class="news-image">Conference Presentation</div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">March 2023</div>
+                <p>Received NIH R01 grant to study inter-species communication in bacterial infections.</p>
+                <div class="news-image">Grant Award</div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">January 2023</div>
+                <p>Lab moved to new facilities in the School of Medicine building at Westlake University.</p>
+                <div class="news-image">New Lab Space</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="contact-simple">
+                <p>Best approach to contact Pengbo is via email:</p>
+                <div class="contact-email">caopengbo@westlake.edu.cn</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Our lab is part of the School of Medicine and the School of Life Sciences at <a href="https://en.westlake.edu.cn/" class="footer-link" target="_blank">Westlake University</a>, located on the Yunqi Campus in Hangzhou, China.</p>
+            <p>We are actively hiring at all levels. <a href="#" data-tab="join" class="footer-link">See open positions</a>.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('nav ul li a');
+            const sections = document.querySelectorAll('.section');
+            const footerLinks = document.querySelectorAll('.footer-link[data-tab]');
+            
+            function switchTab(tabId) {
+                tabLinks.forEach(link => {
+                    if (link.getAttribute('data-tab') === tabId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                sections.forEach(section => {
+                    if (section.id === tabId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+                
+                history.pushState(null, null, `#${tabId}`);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+            
+            footerLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+            
+            document.querySelector('.logo').addEventListener('click', function(e) {
+                e.preventDefault();
+                switchTab('home');
+            });
+            
+            const hash = window.location.hash.substring(1);
+            const validTabs = ['home', 'research', 'people', 'publications', 'join', 'news', 'contact'];
+            
+            if (hash && validTabs.includes(hash)) {
+                switchTab(hash);
+            } else {
+                switchTab('home');
+            }
+        });
+    </script>
+</body>
+</html>
