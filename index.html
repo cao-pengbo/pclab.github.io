@@ -13,13 +13,14 @@
             --black: #222222;
             --dark-gray: #444444;
             --gray: #666666;
-            --light-gray: #f5f5f5;
+            --light-gray: #f8f8f8;
+            --header-gray: #fafafa;
             --white: #ffffff;
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 2rem;
-            --spacing-lg: 2.5rem;
-            --spacing-xl: 4rem;
+            --spacing-xs: 0.4rem;
+            --spacing-sm: 0.8rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
             --border-radius: 4px;
             --transition: all 0.2s ease;
         }
@@ -38,7 +39,7 @@
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
         h1, h2, h3 {
@@ -49,6 +50,7 @@
 
         p {
             margin-bottom: var(--spacing-sm);
+            text-align: justify;
         }
 
         /* Header & Navigation */
@@ -57,7 +59,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: var(--white);
+            background-color: var(--header-gray);
             border-bottom: 1px solid var(--light-gray);
             z-index: 1000;
             padding: 0 var(--spacing-md);
@@ -69,17 +71,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
+            height: 75px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            height: 50px;
+            height: 55px;
         }
 
         .logo img {
-            height: 50px;
+            height: 55px;
             width: auto;
             max-width: 250px;
             object-fit: contain;
@@ -96,7 +98,7 @@
             text-decoration: none;
             color: var(--black);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.05rem;
             transition: var(--transition);
             padding: var(--spacing-xs) 0;
         }
@@ -111,11 +113,12 @@
 
         .twitter-icon {
             color: var(--black);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             transition: var(--transition);
             display: flex;
             align-items: center;
             height: 100%;
+            text-decoration: none;
         }
 
         .twitter-icon:hover {
@@ -125,7 +128,7 @@
         /* Main Content */
         main {
             max-width: 1200px;
-            margin: 100px auto var(--spacing-xl);
+            margin: 110px auto var(--spacing-xl);
             padding: 0 var(--spacing-md);
         }
 
@@ -146,7 +149,7 @@
         /* Home Section - Two Column Layout */
         .home-grid {
             display: grid;
-            grid-template-columns: 40% 60%;
+            grid-template-columns: 30% 70%;
             gap: var(--spacing-md);
             align-items: start;
         }
@@ -200,7 +203,7 @@
         }
 
         .research-figure img {
-            width: 70%;
+            width: 65%;
             max-width: 800px;
             height: auto;
             border-radius: var(--border-radius);
@@ -211,7 +214,7 @@
         .research-caption {
             margin-top: var(--spacing-sm);
             color: var(--gray);
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.4;
             text-align: center;
             max-width: 800px;
@@ -225,8 +228,8 @@
         }
 
         .research-image-simple img {
-            width: 70%;
-            max-width: 800px;
+            width: 40%;
+            max-width: 500px;
             height: auto;
             border-radius: var(--border-radius);
             display: block;
@@ -243,6 +246,7 @@
 
         .person {
             text-align: center;
+            min-height: 220px;
         }
 
         .person-img {
@@ -251,6 +255,7 @@
             border-radius: 50%;
             margin: 0 auto var(--spacing-sm);
             overflow: hidden;
+            background-color: transparent;
         }
 
         .person-img img {
@@ -264,21 +269,37 @@
             font-weight: 500;
             color: var(--black);
             margin-bottom: var(--spacing-xs);
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
         .person-position {
             color: var(--gray);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         /* Publications Section */
+        .publication-list {
+            counter-reset: publication-counter;
+        }
+
         .publication-item {
-            margin-bottom: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            padding-left: 2.5rem;
+            position: relative;
         }
 
         .publication-item:last-child {
             margin-bottom: 0;
+        }
+
+        .publication-item::before {
+            counter-increment: publication-counter;
+            content: counter(publication-counter) ".";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: 500;
+            color: var(--black);
         }
 
         .journal {
@@ -292,14 +313,15 @@
         }
 
         .publication-link {
-            text-decoration: underline;
+            text-decoration: none;
             color: var(--black);
             font-weight: 500;
             margin-left: var(--spacing-xs);
-            padding: 2px 6px;
+            padding: 2px 8px;
             border: 1px solid var(--light-gray);
             border-radius: 3px;
             transition: var(--transition);
+            display: inline-block;
         }
 
         .publication-link:hover {
@@ -319,7 +341,7 @@
             font-weight: 700;
             color: var(--black);
             margin-bottom: var(--spacing-sm);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
         }
 
         /* News Section */
@@ -333,7 +355,7 @@
 
         .news-date {
             color: var(--gray);
-            font-size: 0.95rem;
+            font-size: 1rem;
             margin-bottom: var(--spacing-xs);
         }
 
@@ -343,8 +365,8 @@
         }
 
         .news-image img {
-            width: 70%;
-            max-width: 800px;
+            width: 30%;
+            max-width: 400px;
             height: auto;
             border-radius: var(--border-radius);
             display: block;
@@ -358,7 +380,7 @@
         }
 
         .contact-email {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--black);
             font-weight: 500;
             margin-top: var(--spacing-md);
@@ -370,6 +392,7 @@
             border-top: 1px solid var(--light-gray);
             padding: var(--spacing-lg) var(--spacing-md);
             margin-top: var(--spacing-xl);
+            background-color: var(--header-gray);
         }
 
         .footer-content {
@@ -406,16 +429,22 @@
                 order: -1;
             }
             
-            .research-figure img,
-            .research-image-simple img,
+            .research-figure img {
+                width: 80%;
+            }
+            
+            .research-image-simple img {
+                width: 60%;
+            }
+            
             .news-image img {
-                width: 85%;
+                width: 50%;
             }
         }
 
         @media (max-width: 768px) {
             .nav-container {
-                height: 60px;
+                height: 65px;
                 padding: 0 var(--spacing-sm);
             }
             
@@ -424,15 +453,15 @@
             }
             
             nav ul li a {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
             
             .logo img {
-                height: 45px;
+                height: 50px;
             }
             
             main {
-                margin-top: 80px;
+                margin-top: 90px;
                 padding: 0 var(--spacing-sm);
             }
             
@@ -447,9 +476,12 @@
             }
             
             .research-figure img,
-            .research-image-simple img,
+            .research-image-simple img {
+                width: 90%;
+            }
+            
             .news-image img {
-                width: 95%;
+                width: 70%;
             }
         }
 
@@ -468,11 +500,11 @@
             }
             
             main {
-                margin-top: 120px;
+                margin-top: 130px;
             }
             
             .contact-email {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 word-break: break-all;
             }
             
@@ -484,22 +516,26 @@
                 width: 120px;
                 height: 120px;
             }
+            
+            .publication-item {
+                padding-left: 2rem;
+            }
         }
 
         /* Section Headings */
         h1 {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             margin-bottom: var(--spacing-lg);
             border-bottom: none;
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             margin: var(--spacing-lg) 0 var(--spacing-sm);
         }
 
         h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin: var(--spacing-md) 0 var(--spacing-xs);
         }
     </style>
@@ -573,7 +609,7 @@
             <p>Overall, our lab is dedicated to unraveling the multifaceted nature of diverse bacterial behaviors and their implications for human health.</p>
             
             <div class="research-image-simple">
-                <img src="members_2026/word cloud.png" alt="Bacterial communication research">
+                <img src="members_2026/word cloud.tif" alt="Bacterial communication research">
             </div>
         </section>
 
@@ -627,7 +663,7 @@
                     <div class="person-position">Admin Assistant</div>
                 </div>
                 <div class="person">
-                    <div class="person-img">Photo</div>
+                    <div class="person-img"></div>
                     <div class="person-name">Yinxing Xu, PhD</div>
                     <div class="person-position">Postdoc Associate</div>
                 </div>
@@ -642,7 +678,7 @@
                     <div class="person-position">Research Assistant</div>
                 </div>
                 <div class="person">
-                    <div class="person-img">Photo</div>
+                    <div class="person-img"></div>
                     <div class="person-name">Jingyu Zhang</div>
                     <div class="person-position">Research Assistant</div>
                 </div>
@@ -656,52 +692,54 @@
         <!-- Publications Section -->
         <section id="publications" class="section">
             <h1>Publications</h1>
-            <div class="publication-item">
-                <p><span class="author-underline">Cao, P.</span>, Fleming, D., Moustafa, D. A., Dolan, S. K., Szymanik, K. H., Redman, W. K., Ramos, A., Diggle, F. L., Sullivan, C. S., Goldberg, J. B., Rumbaugh, K. P., and Whiteley, M. (2023). A Pseudomonas aeruginosa small RNA regulates chronic and acute infection. <span class="journal">Nature</span>. <a href="https://www.nature.com/articles/s41586-023-06111-7" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>Ibberson, C. B., Barraza, J. P., Holmes, A. L., <span class="author-underline">Cao, P.</span>, and Whiteley, M. (2022). Precise spatial structure impacts antimicrobial susceptibility of S. aureus in polymicrobial wound infections. <span class="journal">Proceedings of the National Academy of Sciences</span>, 119(51), e2212340119. <a href="https://www.pnas.org/doi/10.1073/pnas.2212340119" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>Balagam, R., <span class="author-underline">Cao, P.</span> (co-first), Sah, G. P., Zhang, Z., Subedi, K., Wall, D., and Igoshin, O. A. (2021). Emergent myxobacterial behaviors arise from reversal suppression induced by kin contacts. <span class="journal">mSystems</span>, 6(6), e00720-21. <a href="https://journals.asm.org/doi/10.1128/msystems.00720-21" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>Sah, G. P., <span class="author-underline">Cao, P.</span>, and Wall, D. (2020). MYXO‐CTERM sorting tag directs proteins to the cell surface via the type II secretion system. <span class="journal">Molecular Microbiology</span>, 113(5), 1038-1051. <a href="https://onlinelibrary.wiley.com/doi/10.1111/mmi.14473" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>[Review article] <span class="author-underline">Cao, P.</span>, and Wall, D. (2020). The Fluidity of the Bacterial Outer Membrane Is Species Specific: Bacterial Lifestyles and the Emergence of a Fluid Outer Membrane. <span class="journal">BioEssays</span>, 1900246. <a href="https://onlinelibrary.wiley.com/doi/10.1002/bies.201900246" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p><span class="author-underline">Cao P.</span> and Wall D. (2019). Direct visualization of a molecular handshake that governs kin recognition and tissue formation in myxobacteria. <span class="journal">Nature Communications</span>. 10(1), 1-10. <a href="https://www.nature.com/articles/s41467-019-11108-w" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p><span class="author-underline">Cao P.</span>, Wei X., Awal R., Müller R., and Wall D. (2019). A highly polymorphic receptor governs many distinct self-recognition types within the Myxococcales order. <span class="journal">mBio</span>. e02751-18. <a href="https://journals.asm.org/doi/10.1128/mbio.02751-18" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>[Review article] Troselj V., <span class="author-underline">Cao P.</span> (co-first) and Wall D. (2017). Cell-cell recognition and social networking in bacteria. <span class="journal">Environmental Microbiology</span>. doi:10.1111/1462-2920.14005. <a href="https://enviromicro-journals.onlinelibrary.wiley.com/doi/10.1111/1462-2920.14005" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p><span class="author-underline">Cao P.</span> and Wall D. (2017). Self-identify reprogrammed by a single residue switch in a cell surface receptor of a social bacterium. <span class="journal">Proceedings of the National Academy of Sciences</span>. <a href="https://www.pnas.org/doi/full/10.1073/pnas.1700315114" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>Vassallo C., <span class="author-underline">Cao P.</span>, Conklin A., Finkelstein H., Hayes C., and Wall D. (2017). Infectious polymorphic toxins delivered by outer membrane exchange discriminate kin in myxobacteria. <span class="journal">eLife</span>. 6:e29397. <a href="https://elifesciences.org/articles/29397" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>Vassallo C., Pathak D.T., <span class="author-underline">Cao P.</span>, Zuckerman D.M., Hoiczyk E., and Wall D. (2015). Cell rejuvenation and social behaviors promoted by LPS exchange in myxobacteria. <span class="journal">Proceedings of the National Academy of Sciences</span>. 112(22):E2939-46. <a href="https://www.pnas.org/doi/full/10.1073/pnas.1503553112" class="publication-link">Link</a></p>
-            </div>
-            
-            <div class="publication-item">
-                <p>[Review article] <span class="author-underline">Cao, P.</span>, Dey A., Vassallo C. and Wall D. (2015). How myxobacteria cooperate. <span class="journal">Journal of Molecular Biology</span>. 427:3709-3721. <a href="https://www.sciencedirect.com/science/article/pii/S0022283615004246?via%3Dihub" class="publication-link">Link</a></p>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><span class="author-underline">Cao, P.</span>, Fleming, D., Moustafa, D. A., Dolan, S. K., Szymanik, K. H., Redman, W. K., Ramos, A., Diggle, F. L., Sullivan, C. S., Goldberg, J. B., Rumbaugh, K. P., and Whiteley, M. (2023). A Pseudomonas aeruginosa small RNA regulates chronic and acute infection. <span class="journal">Nature</span>. <a href="https://www.nature.com/articles/s41586-023-06111-7" class="publication-link">Link</a> <a href="https://www.nature.com/articles/d41586-023-01510-2" class="publication-link">Research briefing</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>Ibberson, C. B., Barraza, J. P., Holmes, A. L., <span class="author-underline">Cao, P.</span>, and Whiteley, M. (2022). Precise spatial structure impacts antimicrobial susceptibility of S. aureus in polymicrobial wound infections. <span class="journal">Proceedings of the National Academy of Sciences</span>, 119(51), e2212340119. <a href="https://www.pnas.org/doi/10.1073/pnas.2212340119" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>Balagam, R., <span class="author-underline">Cao, P.</span> (co-first), Sah, G. P., Zhang, Z., Subedi, K., Wall, D., and Igoshin, O. A. (2021). Emergent myxobacterial behaviors arise from reversal suppression induced by kin contacts. <span class="journal">mSystems</span>, 6(6), e00720-21. <a href="https://journals.asm.org/doi/10.1128/msystems.00720-21" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>Sah, G. P., <span class="author-underline">Cao, P.</span>, and Wall, D. (2020). MYXO‐CTERM sorting tag directs proteins to the cell surface via the type II secretion system. <span class="journal">Molecular Microbiology</span>, 113(5), 1038-1051. <a href="https://onlinelibrary.wiley.com/doi/10.1111/mmi.14473" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>[Review article] <span class="author-underline">Cao, P.</span>, and Wall, D. (2020). The Fluidity of the Bacterial Outer Membrane Is Species Specific: Bacterial Lifestyles and the Emergence of a Fluid Outer Membrane. <span class="journal">BioEssays</span>, 1900246. <a href="https://onlinelibrary.wiley.com/doi/10.1002/bies.201900246" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p><span class="author-underline">Cao P.</span> and Wall D. (2019). Direct visualization of a molecular handshake that governs kin recognition and tissue formation in myxobacteria. <span class="journal">Nature Communications</span>. 10(1), 1-10. <a href="https://www.nature.com/articles/s41467-019-11108-w" class="publication-link">Link</a> <a href="https://communities.springernature.com/posts/microbial-etiquette-shake-hands-before-trading-goods" class="publication-link">Behind the paper</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p><span class="author-underline">Cao P.</span>, Wei X., Awal R., Müller R., and Wall D. (2019). A highly polymorphic receptor governs many distinct self-recognition types within the Myxococcales order. <span class="journal">mBio</span>. e02751-18. <a href="https://journals.asm.org/doi/10.1128/mbio.02751-18" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>[Review article] Troselj V., <span class="author-underline">Cao P.</span> (co-first) and Wall D. (2017). Cell-cell recognition and social networking in bacteria. <span class="journal">Environmental Microbiology</span>. doi:10.1111/1462-2920.14005. <a href="https://enviromicro-journals.onlinelibrary.wiley.com/doi/10.1111/1462-2920.14005" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p><span class="author-underline">Cao P.</span> and Wall D. (2017). Self-identify reprogrammed by a single residue switch in a cell surface receptor of a social bacterium. <span class="journal">Proceedings of the National Academy of Sciences</span>. <a href="https://www.pnas.org/doi/full/10.1073/pnas.1700315114" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>Vassallo C., <span class="author-underline">Cao P.</span>, Conklin A., Finkelstein H., Hayes C., and Wall D. (2017). Infectious polymorphic toxins delivered by outer membrane exchange discriminate kin in myxobacteria. <span class="journal">eLife</span>. 6:e29397. <a href="https://elifesciences.org/articles/29397" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>Vassallo C., Pathak D.T., <span class="author-underline">Cao P.</span>, Zuckerman D.M., Hoiczyk E., and Wall D. (2015). Cell rejuvenation and social behaviors promoted by LPS exchange in myxobacteria. <span class="journal">Proceedings of the National Academy of Sciences</span>. 112(22):E2939-46. <a href="https://www.pnas.org/doi/full/10.1073/pnas.1503553112" class="publication-link">Link</a></p>
+                </div>
+                
+                <div class="publication-item">
+                    <p>[Review article] <span class="author-underline">Cao, P.</span>, Dey A., Vassallo C. and Wall D. (2015). How myxobacteria cooperate. <span class="journal">Journal of Molecular Biology</span>. 427:3709-3721. <a href="https://www.sciencedirect.com/science/article/pii/S0022283615004246?via%3Dihub" class="publication-link">Link</a></p>
+                </div>
             </div>
         </section>
 
@@ -734,7 +772,7 @@
                 <div class="news-date">October 2023</div>
                 <p>Jun 2024. A few personnel changes over the past few months: Farewell to our all-star research assistant Hantao and admin assistant Shuhan, who helped tremendously setting up our lab and getting things off the ground. We will miss you both! On a brighter note, we are thrilled to welcome our new admin assistant Yang Xiao, our postdoc Zijing, and our visiting students Yongmei and Danni. Exciting summer research awaits!</p>
                 <div class="news-image">
-                    <img src="members_2026/IMG_0381.jpg" alt="Lab personnel changes in 2024">
+                    <img src="news/IMG_0381.jpg" alt="Lab personnel changes in 2024">
                 </div>
             </div>
             
@@ -742,7 +780,7 @@
                 <div class="news-date">August 2023</div>
                 <p>Mar 2024. New year, new group photo! Welcome to our newest lab member, Haoru.</p>
                 <div class="news-image">
-                    <img src="members_2026/lab+photo.jpg" alt="Lab group photo 2024">
+                    <img src="news/lab+photo.jpg" alt="Lab group photo 2024">
                 </div>
             </div>
             
