@@ -890,4 +890,12 @@
             const hash = window.location.hash.substring(1);
             const validTabs = ['home', 'research', 'people', 'publications', 'join', 'news', 'contact'];
             
-           
+            if (hash && validTabs.includes(hash)) {
+                switchTab(hash);
+            } else {
+                switchTab('home');
+            }
+        });
+    </script>
+</body>
+</html>
