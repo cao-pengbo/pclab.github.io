@@ -6,7 +6,7 @@
     <title>PC Lab @ Westlake University</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aclonica&family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,11 +16,11 @@
             --light-gray: #f8f8f8;
             --header-gray: #fafafa;
             --white: #ffffff;
-            --spacing-xs: 0.3rem;
-            --spacing-sm: 0.6rem;
-            --spacing-md: 1.2rem;
-            --spacing-lg: 1.8rem;
-            --spacing-xl: 2.5rem;
+            --spacing-xs: 0.4rem;
+            --spacing-sm: 0.8rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
             --border-radius: 4px;
             --transition: all 0.2s ease;
         }
@@ -43,10 +43,9 @@
         }
 
         h1, h2, h3 {
-            font-family: 'Aclonica', sans-serif;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--black);
-            letter-spacing: 0.5px;
+            letter-spacing: -0.5px;
         }
 
         p {
@@ -99,7 +98,7 @@
             text-decoration: none;
             color: var(--black);
             font-weight: 700;
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             transition: var(--transition);
             padding: var(--spacing-xs) 0;
         }
@@ -158,7 +157,6 @@
         .left-column {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-xs);
         }
 
         .small-image {
@@ -168,6 +166,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: var(--spacing-sm);
         }
         
         .small-image img {
@@ -223,21 +222,6 @@
             margin-right: auto;
         }
 
-        .research-question {
-            margin: var(--spacing-md) 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .research-question::before {
-            content: attr(data-number) ".";
-            position: absolute;
-            left: 0;
-            font-weight: 500;
-            color: var(--black);
-            font-family: 'Alegreya Sans', sans-serif;
-        }
-
         .research-image-simple {
             margin: var(--spacing-lg) auto 0;
             text-align: center;
@@ -250,6 +234,24 @@
             border-radius: var(--border-radius);
             display: block;
             margin: 0 auto;
+        }
+
+        .research-questions {
+            margin: var(--spacing-lg) 0;
+        }
+
+        .research-question {
+            margin-bottom: var(--spacing-md);
+            counter-increment: question-counter;
+        }
+
+        .research-question h2::before {
+            content: counter(question-counter) ". ";
+            font-weight: 500;
+        }
+
+        .research-question:last-child {
+            margin-bottom: 0;
         }
 
         /* People Section */
@@ -286,19 +288,11 @@
             color: var(--black);
             margin-bottom: var(--spacing-xs);
             font-size: 1.1rem;
-            min-height: 2.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .person-position {
             color: var(--gray);
             font-size: 1rem;
-            min-height: 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         /* Publications Section */
@@ -308,7 +302,7 @@
 
         .publication-item {
             margin-bottom: var(--spacing-md);
-            padding-left: 1.8rem;
+            padding-left: 2rem;
             position: relative;
         }
 
@@ -389,8 +383,8 @@
         }
 
         .news-image img {
-            width: 30%;
-            max-width: 400px;
+            width: 40%;
+            max-width: 500px;
             height: auto;
             border-radius: var(--border-radius);
             display: block;
@@ -410,7 +404,6 @@
             margin-top: var(--spacing-md);
             font-family: 'Alegreya Sans', sans-serif;
             text-decoration: underline;
-            display: inline-block;
         }
 
         /* Footer */
@@ -422,11 +415,16 @@
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             text-align: center;
             color: var(--gray);
             font-size: 1.05rem;
+        }
+
+        .footer-content p {
+            text-align: center;
+            margin-bottom: var(--spacing-sm);
         }
 
         .footer-link {
@@ -446,8 +444,8 @@
                 gap: var(--spacing-md);
             }
             
-            .left-column {
-                gap: var(--spacing-xs);
+            .small-image {
+                margin-bottom: var(--spacing-sm);
             }
             
             .large-image {
@@ -464,7 +462,7 @@
             }
             
             .news-image img {
-                width: 50%;
+                width: 60%;
             }
         }
 
@@ -479,7 +477,7 @@
             }
             
             nav ul li a {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .logo img {
@@ -501,18 +499,13 @@
                 height: 140px;
             }
             
-            .person-name,
-            .person-position {
-                min-height: auto;
-            }
-            
             .research-figure img,
             .research-image-simple img {
                 width: 90%;
             }
             
             .news-image img {
-                width: 70%;
+                width: 80%;
             }
         }
 
@@ -549,28 +542,24 @@
             }
             
             .publication-item {
-                padding-left: 1.5rem;
-            }
-            
-            .research-question {
-                padding-left: 1.2rem;
+                padding-left: 1.8rem;
             }
         }
 
         /* Section Headings */
         h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             margin-bottom: var(--spacing-lg);
             border-bottom: none;
         }
 
         h2 {
-            font-size: 2.1rem;
+            font-size: 1.9rem;
             margin: var(--spacing-lg) 0 var(--spacing-sm);
         }
 
         h3 {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             margin: var(--spacing-md) 0 var(--spacing-xs);
         }
     </style>
@@ -632,14 +621,22 @@
             
             <p>By directly examining bacterial gene expression in clinical samples, we have begun to understand <i>P. aeruginosa</i> physiology in humans. We discovered a key small regulatory RNA called SicX, which plays a critical role in orchestrating the transition between bacterial chronic persistence and acute exacerbation. Leveraging information of bacterial gene expression within human hosts, we can better understand how <i>P. aeruginosa</i> responds to host environmental cues and changes lifestyles accordingly. Building upon this discovery, our lab focuses on addressing several major questions:</p>
             
-            <h2 class="research-question" data-number="1">How does SicX sRNA govern bacterial chronic or acute infection?</h2>
-            <p>We've established the roles of SicX in vitro in response to oxygen deprivation, but how it governs bacterial lifestyle choice during infection requires further study. Filling this gap is critical for designing new therapies against this important pathogenic trait.</p>
-            
-            <h2 class="research-question" data-number="2">What are the roles of other sRNAs in human infections?</h2>
-            <p>Our discovery of SicX is just the tip of the iceberg. Despite considerable efforts to identify bacterial sRNAs, our knowledge of their identities and functions remains limited to a few examples. Our goal is to uncover and study diverse sRNAs related to infections.</p>
-            
-            <h2 class="research-question" data-number="3">How does inter and intra-species communication impact the progression and outcomes of infections?</h2>
-            <p>Bacterial populations within the host often exhibit physiological heterogeneity and genetic diversity. Moreover, various microbial species often coexist and show intricate interactions with host cells. We aim to explore how novel mechanisms of cell-cell communication can shape the dynamics of bacterial infections.</p>
+            <div class="research-questions">
+                <div class="research-question">
+                    <h2>How does SicX sRNA govern bacterial chronic or acute infection?</h2>
+                    <p>We've established the roles of SicX in vitro in response to oxygen deprivation, but how it governs bacterial lifestyle choice during infection requires further study. Filling this gap is critical for designing new therapies against this important pathogenic trait.</p>
+                </div>
+                
+                <div class="research-question">
+                    <h2>What are the roles of other sRNAs in human infections?</h2>
+                    <p>Our discovery of SicX is just the tip of the iceberg. Despite considerable efforts to identify bacterial sRNAs, our knowledge of their identities and functions remains limited to a few examples. Our goal is to uncover and study diverse sRNAs related to infections.</p>
+                </div>
+                
+                <div class="research-question">
+                    <h2>How does inter and intra-species communication impact the progression and outcomes of infections?</h2>
+                    <p>Bacterial populations within the host often exhibit physiological heterogeneity and genetic diversity. Moreover, various microbial species often coexist and show intricate interactions with host cells. We aim to explore how novel mechanisms of cell-cell communication can shape the dynamics of bacterial infections.</p>
+                </div>
+            </div>
             
             <p>Overall, our lab is dedicated to unraveling the multifaceted nature of diverse bacterial behaviors and their implications for human health.</p>
             
@@ -893,12 +890,4 @@
             const hash = window.location.hash.substring(1);
             const validTabs = ['home', 'research', 'people', 'publications', 'join', 'news', 'contact'];
             
-            if (hash && validTabs.includes(hash)) {
-                switchTab(hash);
-            } else {
-                switchTab('home');
-            }
-        });
-    </script>
-</body>
-</html>
+           
