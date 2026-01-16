@@ -18,7 +18,7 @@
             --spacing-xs: 0.5rem;
             --spacing-sm: 1rem;
             --spacing-md: 2rem;
-            --spacing-lg: 3rem;
+            --spacing-lg: 2.5rem;
             --spacing-xl: 4rem;
             --border-radius: 4px;
             --transition: all 0.2s ease;
@@ -32,12 +32,13 @@
 
         body {
             font-family: 'Alegreya Sans', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--dark-gray);
             background-color: var(--white);
             font-weight: 400;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            font-size: 1.05rem;
         }
 
         h1, h2, h3 {
@@ -72,16 +73,15 @@
         }
 
         .logo {
-            height: 40px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            height: 50px;
         }
 
         .logo img {
-            height: 40px;
+            height: 50px;
             width: auto;
-            max-width: 200px;
+            max-width: 250px;
             object-fit: contain;
         }
 
@@ -89,13 +89,14 @@
             display: flex;
             list-style: none;
             gap: var(--spacing-md);
+            align-items: center;
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--black);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 1rem;
             transition: var(--transition);
             padding: var(--spacing-xs) 0;
         }
@@ -110,8 +111,11 @@
 
         .twitter-icon {
             color: var(--black);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
         .twitter-icon:hover {
@@ -142,26 +146,26 @@
         /* Home Section - Two Column Layout */
         .home-grid {
             display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: var(--spacing-lg);
+            grid-template-columns: 40% 60%;
+            gap: var(--spacing-md);
             align-items: start;
         }
 
         .left-column {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-lg);
+            gap: var(--spacing-sm);
         }
 
         .small-image {
-            height: 250px;
+            height: 280px;
             border-radius: var(--border-radius);
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray);
         }
+        
         .small-image img {
             width: 100%;
             height: 100%;
@@ -180,7 +184,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray);
         }
        
         .large-image img {
@@ -191,24 +194,49 @@
         }
 
         /* Research Section */
-        .research-image {
-            height: 200px;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
+        .research-figure {
             margin: var(--spacing-md) 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
-            font-style: italic;
             text-align: center;
-            padding: var(--spacing-sm);
+        }
+
+        .research-figure img {
+            width: 70%;
+            max-width: 800px;
+            height: auto;
+            border-radius: var(--border-radius);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .research-caption {
+            margin-top: var(--spacing-sm);
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .research-image-simple {
+            margin: var(--spacing-lg) auto 0;
+            text-align: center;
+        }
+
+        .research-image-simple img {
+            width: 70%;
+            max-width: 800px;
+            height: auto;
+            border-radius: var(--border-radius);
+            display: block;
+            margin: 0 auto;
         }
 
         /* People Section */
         .people-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: var(--spacing-lg);
             margin-top: var(--spacing-lg);
         }
@@ -218,26 +246,30 @@
         }
 
         .person-img {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            background-color: var(--light-gray);
             margin: 0 auto var(--spacing-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
+            overflow: hidden;
+        }
+
+        .person-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .person-name {
             font-weight: 500;
             color: var(--black);
             margin-bottom: var(--spacing-xs);
+            font-size: 1.05rem;
         }
 
         .person-position {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         /* Publications Section */
@@ -264,10 +296,14 @@
             color: var(--black);
             font-weight: 500;
             margin-left: var(--spacing-xs);
+            padding: 2px 6px;
+            border: 1px solid var(--light-gray);
+            border-radius: 3px;
+            transition: var(--transition);
         }
 
         .publication-link:hover {
-            opacity: 0.7;
+            background-color: var(--light-gray);
         }
 
         /* Join Section */
@@ -283,7 +319,7 @@
             font-weight: 700;
             color: var(--black);
             margin-bottom: var(--spacing-sm);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
 
         /* News Section */
@@ -297,19 +333,22 @@
 
         .news-date {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: var(--spacing-xs);
         }
 
         .news-image {
-            height: 200px;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
             margin-top: var(--spacing-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray);
+            text-align: center;
+        }
+
+        .news-image img {
+            width: 70%;
+            max-width: 800px;
+            height: auto;
+            border-radius: var(--border-radius);
+            display: block;
+            margin: 0 auto;
         }
 
         /* Contact Section */
@@ -319,7 +358,7 @@
         }
 
         .contact-email {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--black);
             font-weight: 500;
             margin-top: var(--spacing-md);
@@ -338,6 +377,7 @@
             margin: 0 auto;
             text-align: center;
             color: var(--gray);
+            font-size: 1.05rem;
         }
 
         .footer-link {
@@ -358,12 +398,18 @@
             }
             
             .left-column {
-                gap: var(--spacing-md);
+                gap: var(--spacing-sm);
             }
             
             .large-image {
-                height: 300px;
+                height: 400px;
                 order: -1;
+            }
+            
+            .research-figure img,
+            .research-image-simple img,
+            .news-image img {
+                width: 85%;
             }
         }
 
@@ -378,11 +424,11 @@
             }
             
             nav ul li a {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
             
-            .logo {
-                height: 35px;
+            .logo img {
+                height: 45px;
             }
             
             main {
@@ -391,13 +437,19 @@
             }
             
             .people-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
                 gap: var(--spacing-md);
             }
             
             .person-img {
-                width: 120px;
-                height: 120px;
+                width: 140px;
+                height: 140px;
+            }
+            
+            .research-figure img,
+            .research-image-simple img,
+            .news-image img {
+                width: 95%;
             }
         }
 
@@ -416,7 +468,7 @@
             }
             
             main {
-                margin-top: 100px;
+                margin-top: 120px;
             }
             
             .contact-email {
@@ -427,22 +479,27 @@
             .people-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .person-img {
+                width: 120px;
+                height: 120px;
+            }
         }
 
         /* Section Headings */
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             margin-bottom: var(--spacing-lg);
             border-bottom: none;
         }
 
         h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin: var(--spacing-lg) 0 var(--spacing-sm);
         }
 
         h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin: var(--spacing-md) 0 var(--spacing-xs);
         }
     </style>
@@ -495,8 +552,8 @@
             <h1>Research</h1>
             <p>Bacteria, similar to higher animals, exhibit remarkable versatility by altering their behaviors in different environments. While microbiologists typically study bacteria under simple lab conditions, our knowledge of bacterial physiology in their natural habitats (e.g. humans, soils) is limited. Our lab is dedicated to using various state-of-the-art approaches to unravel how bacterial pathogens behave in the human body. By characterizing the in-situ physiology of opportunistic pathogens (such as <i>Pseudomonas aeruginosa</i>), we aim to provide molecular insights into developing new therapeutics (such as antisense therapy) to combat challenging bacterial infections.</p>
             
-            <div class="research-image">
-                <img src="members_2026/model.png" alt="P. aeruginosa SicX RNA" class="research-image">
+            <div class="research-figure">
+                <img src="members_2026/model.png" alt="P. aeruginosa SicX RNA">
                 <div class="research-caption">
                     P. aeruginosa produces a small RNA named SicX, which is induced in low oxygen conditions and governs the shift between chronic and acute infections (Cao et al., 2023)
                 </div>
@@ -515,7 +572,7 @@
             
             <p>Overall, our lab is dedicated to unraveling the multifaceted nature of diverse bacterial behaviors and their implications for human health.</p>
             
-            <div class="research-image" style="margin-top: var(--spacing-lg);">
+            <div class="research-image-simple">
                 <img src="members_2026/word cloud.tif" alt="Bacterial communication research">
             </div>
         </section>
@@ -524,7 +581,6 @@
         <section id="people" class="section">
             <h1>People</h1>
             <div class="people-grid">
-                <!-- 13 People -->
                 <div class="person">
                     <img src="members_2026/cao-pengbo.jpg" alt="Pengbo Cao" class="person-img">
                     <div class="person-name">Pengbo Cao</div>
@@ -593,15 +649,15 @@
             </div>
             
             <h2 style="margin-top: var(--spacing-xl);">Alumni</h2>
-            <p><strong>2023-2024: Chao Gao</strong>, Research Assistant</p>
-            <p><strong>2023-2024: Shuhan Shi</strong>, Admin Assistant</p>
+            <p>2023-2024: Chao Gao, Research Assistant</p>
+            <p>2023-2024: Shuhan Shi, Admin Assistant</p>
         </section>
 
         <!-- Publications Section -->
         <section id="publications" class="section">
             <h1>Publications</h1>
             <div class="publication-item">
-                <p><span class="author-underline">Cao, P.</span>, Fleming, D., Moustafa, D. A., Dolan, S. K., Szymanik, K. H., Redman, W. K., Ramos, A., Diggle, F. L., Sullivan, C. S., Goldberg, J. B., Rumbaugh, K. P., and Whiteley, M. (2023). A Pseudomonas aeruginosa small RNA regulates chronic and acute infection. <span class="journal">Nature</span>. <a href="https://www.nature.com/articles/s41586-023-06111-7" class="publication-link">Link</a> <a href="https://www.nature.com/articles/d41586-023-01510-2" class="publication-link">Research briefing</a></p>
+                <p><span class="author-underline">Cao, P.</span>, Fleming, D., Moustafa, D. A., Dolan, S. K., Szymanik, K. H., Redman, W. K., Ramos, A., Diggle, F. L., Sullivan, C. S., Goldberg, J. B., Rumbaugh, K. P., and Whiteley, M. (2023). A Pseudomonas aeruginosa small RNA regulates chronic and acute infection. <span class="journal">Nature</span>. <a href="https://www.nature.com/articles/s41586-023-06111-7" class="publication-link">Link</a></p>
             </div>
             
             <div class="publication-item">
@@ -621,7 +677,7 @@
             </div>
             
             <div class="publication-item">
-                <p><span class="author-underline">Cao P.</span> and Wall D. (2019). Direct visualization of a molecular handshake that governs kin recognition and tissue formation in myxobacteria. <span class="journal">Nature Communications</span>. 10(1), 1-10. <a href="https://www.nature.com/articles/s41467-019-11108-w" class="publication-link">Link</a> <a href="https://communities.springernature.com/posts/microbial-etiquette-shake-hands-before-trading-goods" class="publication-link">Behind the paper</a></p>
+                <p><span class="author-underline">Cao P.</span> and Wall D. (2019). Direct visualization of a molecular handshake that governs kin recognition and tissue formation in myxobacteria. <span class="journal">Nature Communications</span>. 10(1), 1-10. <a href="https://www.nature.com/articles/s41467-019-11108-w" class="publication-link">Link</a></p>
             </div>
             
             <div class="publication-item">
@@ -678,7 +734,7 @@
                 <div class="news-date">October 2023</div>
                 <p>Jun 2024. A few personnel changes over the past few months: Farewell to our all-star research assistant Hantao and admin assistant Shuhan, who helped tremendously setting up our lab and getting things off the ground. We will miss you both! On a brighter note, we are thrilled to welcome our new admin assistant Yang Xiao, our postdoc Zijing, and our visiting students Yongmei and Danni. Exciting summer research awaits!</p>
                 <div class="news-image">
-                    <img src="news/IMG_0381.jpg" alt="Lab personnel changes in 2024">
+                    <img src="members_2026/IMG_0381.jpg" alt="Lab personnel changes in 2024">
                 </div>
             </div>
             
@@ -686,7 +742,7 @@
                 <div class="news-date">August 2023</div>
                 <p>Mar 2024. New year, new group photo! Welcome to our newest lab member, Haoru.</p>
                 <div class="news-image">
-                    <img src="news/lab+photo.jpg" alt="Lab group photo 2024">
+                    <img src="members_2026/lab+photo.jpg" alt="Lab group photo 2024">
                 </div>
             </div>
             
